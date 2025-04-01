@@ -9,6 +9,70 @@ int main() {
     // Sugestão: Declare uma matriz bidimensional para representar o tabuleiro (Ex: int tabuleiro[5][5];).
     // Sugestão: Posicione dois navios no tabuleiro, um verticalmente e outro horizontalmente.
     // Sugestão: Utilize `printf` para exibir as coordenadas de cada parte dos navios.
+    char colunas[10] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'};
+
+    int tabuleiro[10][10];
+
+    // Loop criando o tabuleiro
+    for (int i = 0; i < 10; i++) {
+        for (int j = 0; j < 10; j++) {
+            // Colocando navio na posição D2 a F2
+            if (i == 2 && (j == 3 || j == 4 || j == 5)) {
+                tabuleiro[i][j] = 3;
+                continue;
+            }
+
+            // Colocando navio na posição H5 a H7
+            if ((i == 5 || i == 6 || i == 7) && j == 7) {
+                tabuleiro[i][j] = 3;
+                continue;
+            }
+
+            // Definindo o valor de 0 para a água
+            tabuleiro[i][j] = 0;
+        }
+    }
+
+    // Loop para imprimir tabuleiro
+    for (int i = 0; i < 10; i++) {
+        // Se o loop estiver passando pela primeira linha do tabuleiro
+        // irá imprimir a referência das colunas em letras
+        if (i == 0) {
+            // Loop imprimindo a letra de cada coluna
+            for (int colunaIndex = 0; colunaIndex < 10; colunaIndex++) {
+                // Dá um espaço a esquerda para alinhar a letra com a coluna do
+                // tabuleiro
+                if (colunaIndex == 0) {
+                    printf("    ");
+                }
+
+                // Imprime a letra da coluna do tabuleiro
+                printf("%c ", colunas[colunaIndex]);
+            }
+
+            printf("\n");
+
+            // Colocando linha de separação entre as colunas e os campos do
+            // tabuleiro
+            for (int linha = 0; linha < 23; linha++) {
+                printf("-");
+            }
+
+            printf("\n");
+        }
+
+
+        // Imprime o número da linha com separador antes de imprimir os campos
+        // do tabuleiro
+        printf("%d | ", i);
+
+        // Loop para imprimir os campos do tabuleiro
+        for (int j = 0; j < 10; j++) {
+            printf("%d ", tabuleiro[i][j]);
+        }
+
+        printf("\n");
+    }
 
     // Nível Aventureiro - Expansão do Tabuleiro e Posicionamento Diagonal
     // Sugestão: Expanda o tabuleiro para uma matriz 10x10.
