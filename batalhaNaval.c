@@ -4,7 +4,8 @@
 // Este código inicial serve como base para o desenvolvimento do sistema de Batalha Naval.
 // Siga os comentários para implementar cada parte do desafio.
 
-int main() {
+int main()
+{
     // Nível Novato - Posicionamento dos Navios
     // Sugestão: Declare uma matriz bidimensional para representar o tabuleiro (Ex: int tabuleiro[5][5];).
     // Sugestão: Posicione dois navios no tabuleiro, um verticalmente e outro horizontalmente.
@@ -14,16 +15,20 @@ int main() {
     int tabuleiro[10][10];
 
     // Loop criando o tabuleiro
-    for (int i = 0; i < 10; i++) {
-        for (int j = 0; j < 10; j++) {
+    for (int i = 0; i < 10; i++)
+    {
+        for (int j = 0; j < 10; j++)
+        {
             // Colocando navio na posição D2 a F2
-            if (i == 2 && (j == 3 || j == 4 || j == 5)) {
+            if (i == 2 && (j == 3 || j == 4 || j == 5))
+            {
                 tabuleiro[i][j] = 3;
                 continue;
             }
 
             // Colocando navio na posição H5 a H7
-            if ((i == 5 || i == 6 || i == 7) && j == 7) {
+            if ((i == 5 || i == 6 || i == 7) && j == 7)
+            {
                 tabuleiro[i][j] = 3;
                 continue;
             }
@@ -33,51 +38,26 @@ int main() {
         }
     }
 
-    // Loop para imprimir tabuleiro
-    for (int i = 0; i < 10; i++) {
-        // Se o loop estiver passando pela primeira linha do tabuleiro
-        // irá imprimir a referência das colunas em letras
-        if (i == 0) {
-            // Loop imprimindo a letra de cada coluna
-            for (int colunaIndex = 0; colunaIndex < 10; colunaIndex++) {
-                // Dá um espaço a esquerda para alinhar a letra com a coluna do
-                // tabuleiro
-                if (colunaIndex == 0) {
-                    printf("    ");
-                }
-
-                // Imprime a letra da coluna do tabuleiro
-                printf("%c ", colunas[colunaIndex]);
-            }
-
-            printf("\n");
-
-            // Colocando linha de separação entre as colunas e os campos do
-            // tabuleiro
-            for (int linha = 0; linha < 23; linha++) {
-                printf("-");
-            }
-
-            printf("\n");
-        }
-
-
-        // Imprime o número da linha com separador antes de imprimir os campos
-        // do tabuleiro
-        printf("%d | ", i);
-
-        // Loop para imprimir os campos do tabuleiro
-        for (int j = 0; j < 10; j++) {
-            printf("%d ", tabuleiro[i][j]);
-        }
-
-        printf("\n");
-    }
-
     // Nível Aventureiro - Expansão do Tabuleiro e Posicionamento Diagonal
     // Sugestão: Expanda o tabuleiro para uma matriz 10x10.
     // Sugestão: Posicione quatro navios no tabuleiro, incluindo dois na diagonal.
     // Sugestão: Exiba o tabuleiro completo no console, mostrando 0 para posições vazias e 3 para posições ocupadas.
+    for (int i = 0; i < 10; i++)
+    {
+        for (int j = 0; j < 10; j++)
+        {
+            // Colocando navio na diagonal principal de C2 a E4
+            if ((i == 2 || i == 3 || i == 4) && i == j)
+            {
+                tabuleiro[i][j] = 3;
+            }
+
+            // Colocando navio na diagonal secundária de I1 a G3
+            if ((i == 1 || i == 2 || i == 3) && (i + j) == 9) {
+                tabuleiro[i][j] = 3;
+            }
+        }
+    }
 
     // Nível Mestre - Habilidades Especiais com Matrizes
     // Sugestão: Crie matrizes para representar habilidades especiais como cone, cruz, e octaedro.
@@ -89,7 +69,7 @@ int main() {
     // 0 0 1 0 0
     // 0 1 1 1 0
     // 1 1 1 1 1
-    
+
     // Exemplo para habilidade em octaedro:
     // 0 0 1 0 0
     // 0 1 1 1 0
@@ -99,6 +79,52 @@ int main() {
     // 0 0 1 0 0
     // 1 1 1 1 1
     // 0 0 1 0 0
+
+    // Loop para imprimir tabuleiro
+    for (int i = 0; i < 10; i++)
+    {
+        // Se o loop estiver passando pela primeira linha do tabuleiro
+        // irá imprimir a referência das colunas em letras
+        if (i == 0)
+        {
+            // Loop imprimindo a letra de cada coluna
+            for (int colunaIndex = 0; colunaIndex < 10; colunaIndex++)
+            {
+                // Dá um espaço a esquerda para alinhar a letra com a coluna do
+                // tabuleiro
+                if (colunaIndex == 0)
+                {
+                    printf("    ");
+                }
+
+                // Imprime a letra da coluna do tabuleiro
+                printf("%c ", colunas[colunaIndex]);
+            }
+
+            printf("\n");
+
+            // Colocando linha de separação entre as colunas e os campos do
+            // tabuleiro
+            for (int linha = 0; linha < 23; linha++)
+            {
+                printf("-");
+            }
+
+            printf("\n");
+        }
+
+        // Imprime o número da linha com separador antes de imprimir os campos
+        // do tabuleiro
+        printf("%d | ", i);
+
+        // Loop para imprimir os campos do tabuleiro
+        for (int j = 0; j < 10; j++)
+        {
+            printf("%d ", tabuleiro[i][j]);
+        }
+
+        printf("\n");
+    }
 
     return 0;
 }
