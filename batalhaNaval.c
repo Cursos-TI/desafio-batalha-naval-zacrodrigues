@@ -53,7 +53,8 @@ int main()
             }
 
             // Colocando navio na diagonal secundária de I1 a G3
-            if ((i == 1 || i == 2 || i == 3) && (i + j) == 9) {
+            if ((i == 1 || i == 2 || i == 3) && (i + j) == 9)
+            {
                 tabuleiro[i][j] = 3;
             }
         }
@@ -69,18 +70,176 @@ int main()
     // 0 0 1 0 0
     // 0 1 1 1 0
     // 1 1 1 1 1
+    printf("\n*** Habilidade Cone ***\n\n");
+
+    int matrizCone[3][5];
+
+    for (int i = 0; i < 3; i++)
+    {
+        for (int j = 0; j < 5; j++)
+        {
+            matrizCone[i][j] = 0;
+
+            if (i == 0 && j == 2)
+            {
+                matrizCone[i][j] = 1;
+            }
+
+            if (i == 1 && (j == 1 || j == 2 || j == 3))
+            {
+                matrizCone[i][j] = 1;
+            }
+
+            if (i == 2)
+            {
+                matrizCone[i][j] = 1;
+            }
+
+            printf("%d ", matrizCone[i][j]);
+        }
+
+        printf("\n");
+    }
 
     // Exemplo para habilidade em octaedro:
     // 0 0 1 0 0
     // 0 1 1 1 0
     // 0 0 1 0 0
+    printf("\n*** Habilidade Octaedro ***\n\n");
+
+    int matrizOctaedro[3][5];
+
+    for (int i = 0; i < 3; i++)
+    {
+        for (int j = 0; j < 5; j++)
+        {
+            matrizOctaedro[i][j] = 0;
+
+            if (i == 0 && j == 2)
+            {
+                matrizOctaedro[i][j] = 1;
+            }
+
+            if (i == 1 && (j == 1 || j == 2 || j == 3))
+            {
+                matrizOctaedro[i][j] = 1;
+            }
+
+            if (i == 2 && j == 2)
+            {
+                matrizOctaedro[i][j] = 1;
+            }
+
+            printf("%d ", matrizOctaedro[i][j]);
+        }
+
+        printf("\n");
+    }
 
     // Exemplo para habilidade em cruz:
     // 0 0 1 0 0
     // 1 1 1 1 1
     // 0 0 1 0 0
+    printf("\n*** Habilidade Cruz ***\n\n");
+
+    int matrizCruz[3][5];
+
+    for (int i = 0; i < 3; i++)
+    {
+        for (int j = 0; j < 5; j++)
+        {
+            matrizCruz[i][j] = 0;
+
+            if (i == 0 && j == 2)
+            {
+                matrizCruz[i][j] = 1;
+            }
+
+            if (i == 1)
+            {
+                matrizCruz[i][j] = 1;
+            }
+
+            if (i == 2 && j == 2)
+            {
+                matrizCruz[i][j] = 1;
+            }
+
+            printf("%d ", matrizCruz[i][j]);
+        }
+
+        printf("\n");
+    }
+
+    // Colocando a habilidade de cone no tabuleiro
+    for (int i = 0; i < 10; i++)
+    {
+        for (int j = 0; j < 10; j++)
+        {
+            if (i == 7 && j == 2)
+            {
+                tabuleiro[i][j] = 5;
+            }
+
+            if (i == 8 && (j == 1 || j == 2 || j == 3))
+            {
+                tabuleiro[i][j] = 5;
+            }
+
+            if (i == 9 && j < 5)
+            {
+                tabuleiro[i][j] = 5;
+            }
+        }
+    }
+
+    // Colocando a habilidade de octaedro no tabuleiro
+    for (int i = 0; i < 10; i++)
+    {
+        for (int j = 0; j < 10; j++)
+        {
+            if (i == 7 && j == 8)
+            {
+                tabuleiro[i][j] = 5;
+            }
+
+            if (i == 8 && j > 6)
+            {
+                tabuleiro[i][j] = 5;
+            }
+
+            if (i == 9 && j == 8)
+            {
+                tabuleiro[i][j] = 5;
+            }
+        }
+    }
+
+    // Colocando a habilidade de cruz no tabuleiro
+    for (int i = 0; i < 10; i++)
+    {
+        for (int j = 0; j < 10; j++)
+        {
+            if (i == 5 && j == 4)
+            {
+                tabuleiro[i][j] = 5;
+            }
+
+            if (i == 6 && j > 1 && j < 7)
+            {
+                tabuleiro[i][j] = 5;
+            }
+
+            if (i == 7 && j == 4)
+            {
+                tabuleiro[i][j] = 5;
+            }
+        }
+    }
 
     // Loop para imprimir tabuleiro
+    printf("*** Tabuleiro ***\n\n");
+
     for (int i = 0; i < 10; i++)
     {
         // Se o loop estiver passando pela primeira linha do tabuleiro
